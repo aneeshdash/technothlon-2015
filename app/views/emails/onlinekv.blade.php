@@ -1,9 +1,9 @@
 Respected Principal,<br>
 Kendriya Vidyalaya,<br>
 <br>
-The Navodaya Vidyalaya Samiti will be conducting the International School Championship-Technothlon with the collaboration of IIT Guwahati student fraternity. A mail had been passed by Mr. Nagendra Goyal (Deputy Commissioner(Acad I), Kendriya Vidyalaya Sangathan) which you might have received by now (also attached with the mail). <br>
+The Kendriya Vidyalaya Sangathan will be conducting the International School Championship-Technothlon with the collaboration of IIT Guwahati student fraternity. A mail had been passed by Mr. Nagendra Goyal (Deputy Commissioner(Acad I), Kendriya Vidyalaya Sangathan) which you might have received by now (also attached with the mail). <br>
 
-We have recieved x registrations from your school through online mode. Please confirm whether you have registered these students. If not, we request you to register the students by replying to this email as the exam is free for KV students if they register through the school. To register more students please fill their details in the excel sheet attached and send it back to us.<br>
+We have recieved {{ $count }} registrations from your school through online mode. Please confirm whether you have registered these students. If not, we request you to register the students by replying to this email as the exam is free for KV students if they register through the school. To register more students please fill their details in the excel sheet attached and send it back to us.<br>
 <br>
  The soft copy of the question paper and OMR sheet will be sent to be printed by 13th July. <br>
 

@@ -5,15 +5,19 @@
  * Date: 27/11/14
  * Time: 10:43 AM
  */
+use Illuminate\Auth\UserTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
-class CityRep extends Eloquent {
+class CityRep extends Eloquent implements UserInterface {
 
-    use SoftDeletingTrait;
+    use UserTrait, RemindableTrait, SoftDeletingTrait;
 
     protected $table='cityreps';
 
     function city() {
-        return $this->hasOne('City');
+        return $this->belongsTo('City');
     }
 
 } 

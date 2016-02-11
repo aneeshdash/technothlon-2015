@@ -6,7 +6,10 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
 class State extends Eloquent{
-	protected $table = 'states';
+	use SoftDeletingTrait;
+    protected $table = 'states';
+
+
     function cities() {
         return $this->hasMany('City');
     }

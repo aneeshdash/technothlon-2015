@@ -10,10 +10,8 @@
                     <div class="box-body table-responsive">
                         <table class="table table-bordered">
                             <tr>
-                                <th>Name 1</th>
-                                <th>Name 2</th>
                                 <th>Roll Number</th>
-                                <th>Password</th>
+                                <th>Rank</th>
                             </tr>
                             {{ $details }}
                         </table>

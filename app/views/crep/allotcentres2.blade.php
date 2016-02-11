@@ -19,7 +19,7 @@
                 ?>
 
             <div class="col-sm-6 school" id="{{ $id }}">
-                <div class="box @if($tobeallot == 0) box-success @else box-warning @endif box-solid">
+                <div class="box @if($tobeallot == 0) box-success @else box-warning @endif box-solid" style="overflow: auto">
                     <div class="box-header with-border">
                         <h3 class="box-title">{{ $school->name }}</h3>
                         <div class="box-tools pull-right">
@@ -30,7 +30,7 @@
                         <div class="col-sm-6"><b>To be allotted : <i class="tobe">{{ $tobeallot }}</i> teams</b></div>
                         <div class="col-sm-6">Total : {{ $total }} teams</div><br>
                         @if($tobeallot != 0)
-                        <div class="form-inline">
+                        <div class="form-inline allotform">
                             <select class="form-control centre">
                                 {{ $centres }}
                             </select>
@@ -39,8 +39,8 @@
                         </div>
                         @endif
                         <br>
-                        <button class="btn btn-primary @if($school->admitgenerated == true || $tobeallot == $total)disabled @endif generate">  Generate Admit Cards</button>
-                        <a href="{{ route('crepadmitdown',$id) }}" class="btn btn-primary pull-right @if($school->admitgenerated == false || $tobeallot == $total)disabled @endif download" onclick="alert('While printing admit cards please remove margins of page.')"><i class="fa fa-cloud-download"></i>  Download Admit Cards</a>
+                        <a href="{{ route('crepadmitprint',$id) }}" target="_blank" class="btn btn-primary pull-right @if($tobeallot > 0) disabled @endif print" onclick="alert('Print the page that will be displayed.')"><i class="ion-printer" style="font-size: 20px"></i>&nbsp;&nbsp;  Print Admit Cards</a>
+                        <div style="clear: both"></div>
                     </div><!-- /.box-body -->
                 </div>
             </div>
@@ -51,14 +51,11 @@
 @section('script')
     <script>
         var needToConfirm1 = false;
-        var needToConfirm2 = false;
         window.onbeforeunload = confirmExit;
         function confirmExit()
         {
             if (needToConfirm1)
                 return 'Centre allocation is not yet complete. Do you want to exit?';
-            if (needToConfirm2)
-                return 'Admit Card generation is not yet complete. Do you want to exit?';
         }
 
         $('.allot').click(function() {
@@ -72,7 +69,7 @@
             }
             school = div.attr('id');
             centre = div.find('option:selected').val();
-            needToConfirm = true;
+            needToConfirm1 = true;
             $.ajax({
                 url: '{{ route('crepfuncallotcentre') }}',
                 method: 'post',
@@ -81,8 +78,6 @@
                     .success(function (result) {
                         alert(result);
                         if($.trim(result) == 'Centre successfully allotted') {
-                            div.find('.generate').removeClass('disabled');
-                            div.find('.download').addClass('disabled');
                             if(allot >= limit) {
                                 $('option[value="'+centre+'"]').remove();
                                 div.find('.tobe').html(allot-limit);
@@ -94,6 +89,8 @@
                                 box.addClass('box-success');
                                 div.find('.tobe').html('0');
                                 div.find('.2ballot').val(0);
+                                div.find('.allotform').remove();
+                                div.find('.print').removeClass('disabled');
                             }
                         }
                     })
@@ -104,37 +101,6 @@
                         needToConfirm1 = false;
                     });
         });
-
-        $('.generate').click(function() {
-            school = $(this).closest('.school').attr('id');
-            button = $(this)
-            button.addClass('disabled');
-            button.html('Generating...');
-            setTimeout("alert('Admit Card generation may take some time. Please be patient.');", 1);
-            needToConfirm2 = true;
-            $.ajax({
-                url: '{{ route('crepfuncgenadmit') }}',
-                method: 'post',
-                data: { school: school},
-                timeout: 0
-            })
-                    .success(function (result) {
-                        alert(result);
-                        if($.trim(result) == 'Admit Cards Generated') {
-                            button.html('Generate Admit Cards');
-                            button.closest('.school').find('.download').removeClass('disabled');
-                        }
-                    })
-                    .fail(function () {
-                        alert('There was an error. Please Try Again');
-                        button.removeClass('disabled');
-                        button.html('Generate Admit Cards');
-                    })
-                    .done(function () {
-                        needToConfirm2 = false;
-                    });
-        });
-
 
     </script>
     @endsection

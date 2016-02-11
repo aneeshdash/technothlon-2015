@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    Technopedia | Login
+    Result | Login
     @endsection
 @section('description')
-    Technopedia | Login
+    Result | Login
     @endsection
 @section('head')
         <link rel="stylesheet" type="text/css" href="{{ asset('CSS/technopedialogin.css') }}">
@@ -26,6 +26,5 @@
             </div>
             </form>
             <br><br>
-            <p>If you have not received your roll number, you will receive it within a few days.</p>
         </div>
     @endsection

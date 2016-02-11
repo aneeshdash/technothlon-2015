@@ -2,7 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CRep Panel | Technothlon</title>
+    <meta property="og:title" name="og:title" content="Admin Panel | Technothlon"/>
+    <title>Admin Panel | Technothlon</title>
+    <link rel="image_src" href="{{ asset('images/logo.png') }}"/>
+    <meta property="og:image" name="og:image" content="{{ asset('images/logo.png') }}"/>
+    <link rel="shortcut icon" href="{{ asset('logo.ico') }}" type="image/x-icon"/>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -29,7 +33,8 @@
 <div class="wrapper">
 
     <header class="main-header">
-        <a href="http://technothlon.techniche.org" target="_blank" class="logo"><img src="{{ asset('images/technothlon.png') }}" class="img-responsive" style="height: 70%; margin: auto; margin-top: 2.5%"></a>
+        <a href="http://technothlon.techniche.org" target="_blank" class="logo hidden-xs"><img src="{{ asset('images/technothlon.png') }}" class="img-responsive" style="height: 70%; margin: auto; margin-top: 2.5%"></a>
+        <a href="http://technothlon.techniche.org" target="_blank" class="logo visible-xs"><img src="{{ asset('images/technothlon-nav-logo.png') }}" class="img-responsive" style="height: 100%; margin: auto"></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -45,24 +50,24 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="{{ asset('images/logo-white-background.jpg') }}" class="user-image" alt="User Image"/>
-                            <span class="hidden-xs">{{ Auth::crep()->get()->name }}</span>
+                            <span class="hidden-xs">{{ Auth::admin()->get()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
                                 <img src="{{ asset('images/logo-white-background.jpg') }}" class="img-circle" alt="User Image" />
                                 <p>
-                                    {{ Auth::crep()->get()->name }}
-                                    <small>{{ Auth::crep()->get()->city->name }}</small>
+                                    {{ Auth::admin()->get()->name }}
+                                    <small>{{ Auth::admin()->get()->region }}</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{ route('crepprofile') }}" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{{ route('adminprofile') }}" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="{{ route('creplogout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="{{ route('adminlogout') }}" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -84,15 +89,30 @@
                     <img src="{{ asset('images/mascot-white.png') }}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>{{ Auth::crep()->get()->name }}</p>
+                    <p>{{ Auth::admin()->get()->name }}</p>
                 </div>
             </div>
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Registrations</span>
+                    <a href="{{ route('adminregs') }}">
+                        <i class="fa fa-users"></i> <span>Registrations</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ route('adminuploadreg') }}">
+                        <i class="fa fa-upload"></i> <span>Upload</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ route('generatepasswords') }}">
+                        <i class="fa fa-user-secret"></i> <span>Generete Passwords</span>
+                    </a>
+                </li>
+                <li class="treeview">
+                    <a href="{{ route('admindown') }}">
+                        <i class="fa fa-download"></i> <span>Downloads</span>
                     </a>
                 </li>
             </ul>

@@ -10,7 +10,7 @@
             font-size: 14px;
             text-align: left;
         }
-        @page { margin: 10px }
+        @page { margin: 25px }
 
         th {
             vertical-align: top;
@@ -39,14 +39,12 @@
     </style>
 </head>
 <body>
-@foreach(User::where('school_id',$school)->where('paid',1)->get() as $user)
     <?php
-            $pass = str_random(6);
-            $user->result_pass = Crypt::encrypt($pass);
-            $user->save();
+            $user = Auth::user()->get();
+            $pass = Crypt::decrypt($user->result_pass);
     ?>
 <div style="width: 790px; word-wrap: break-word">
-    <div style="width: 49%;float: left;text-align: center;">
+    <div style="width: 47%;float: left;text-align: center;">
         <img src="{{ asset('images/technothlon.png') }}" style="width: 300px">
         <table>
             <tr>
@@ -83,7 +81,7 @@
             </tr>
         </table>
     </div>
-    <div style="width: 49%;float: left">
+    <div style="width: 47%;float: left">
         <div style="width: auto">
             <table style="border: solid;border-width: 2px">
                 <tr>
@@ -115,6 +113,5 @@
     </div>
 </div>
 <div style="clear: both"><hr></div>
-@endforeach
 </body>
 </html>

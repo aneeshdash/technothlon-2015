@@ -1,4 +1,5 @@
 @extends('technopedia.layout')
 @section('body')
-{{ $body }}
+{{ $month }}
+    {{--{{ intval(date('m',strtotime($month))) }}--}}
 @endsection

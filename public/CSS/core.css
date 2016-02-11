@@ -56,9 +56,9 @@ label {
 }
 
 input, select, textarea {
-    border: 1px solid #000 !important;
+    border: 1px solid #000 ;
     border-radius: 3px 3px;
-    box-shadow: 0 0 2px 0 #003442 !important;
+    box-shadow: 0 0 2px 0 #003442 ;
     font-family: helvetica, sans-serif !important;
     /*font-size: 14px !important;*/
     font-weight: 100 !important;

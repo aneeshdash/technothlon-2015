@@ -8,10 +8,9 @@
             <img src="{{ asset('images/mascot.png') }}"; style="height: 200px">
         </div>
         <div style="display: inline-block">
-            Congratulations {{ $user->name1 }} & {{ $user->name2 }}, <br>
-            You have been successfully registered.<br>
-            Your roll number is {{ $user->roll }}. <br>
-            Please check your email for other details regarding the examination.<br><br>
+            {{ $user->name1 }} & {{ $user->name2 }}, <br>
+            Your centre has been successfully changed.<br>
+            Admit cards will be available on our website in a few days. <br><br>
         For any other query <a href="{{ route('contact') }}">contact us</a>.
         </div>
     </div>

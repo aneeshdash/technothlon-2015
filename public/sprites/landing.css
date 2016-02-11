@@ -1,0 +1,36 @@
+.sprite-logos {
+    display:inline-block;overflow:hidden;background:url(landing.png) no-repeat;
+}
+.logo_partial_head {
+    width:810px;height:110px;background-position:-230px -2px
+}
+.logo_partial_tag {
+    width:401px;height:60px;background-position:-99px -407px
+}
+.logo_partial_text {
+    width:818px;height:70px;background-position:-99px -335px
+}
+.logo_technothlon {
+    width:800px;height:180px;background-position:-230px -114px
+}
+.logo_technothlon_square {
+    width:95px;height:90px;background-position:-2px -335px
+}
+.mascot_technothlon_no_text {
+    width:226px;height:331px;background-position:-2px -2px
+}
+@media (max-width:800px) and (min-width:600px) {
+    .sprite-logos {
+        zoom:.7;
+    }
+}
+@media (max-width:600px) and (min-width:380px) {
+    .sprite-logos {
+        zoom:.5;
+    }
+}
+@media (max-width:380px) and (min-width:100px) {
+    .sprite-logos {
+        zoom:.4;
+    }
+}

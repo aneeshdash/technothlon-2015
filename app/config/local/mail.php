@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'log',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtpout.asia.secureserver.net',
+    'host' => 'smtp.mailgun.org',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -40,7 +40,7 @@ return array(
 	|
 	*/
 
-	'port' => 465,
+	'port' => 587,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'technothlon@techniche.org', 'name' => 'Technothlon'),
+    'from' => array('address' => 'noreply@technothlon.techniche.org', 'name' => 'Technothlon'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return array(
 	|
 	*/
 
-	'encryption' => 'ssl',
+	'encryption' => 'tls',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return array(
 	|
 	*/
 
-	'username' => 'technothlon@techniche.org',
+    'username' => 'technothlon.heads@gmail.com',
 //	'username' => 'aneeshdash@gmail.com',
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	*/
 
 //	'password' => 'd9jnjtiwFCfowAQtBB9F4g',
-	'password' => 'Techno15rocks',
+    'password' => 'Techno15rocks',
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path

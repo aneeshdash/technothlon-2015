@@ -1,0 +1,59 @@
+.sprite-technopedia {
+    display: inline-block;
+    overflow: hidden;
+    background: url('technopedia.png') no-repeat;
+}
+
+.friend {
+    width: 130px;
+    height: 130px;
+    background-position: -2px -2px
+}
+
+.leaderboard {
+    width: 130px;
+    height: 130px;
+    background-position: -134px -2px
+}
+
+.previous {
+    width: 130px;
+    height: 130px;
+    background-position: -266px -2px
+}
+
+.quiz {
+    width: 130px;
+    height: 130px;
+    background-position: -398px -2px
+}
+
+.technopedia-logo {
+    width: 189px;
+    height: 115px;
+    background-position: -530px -2px
+}
+
+.technopedia-title {
+    width: 477px;
+    height: 76px;
+    background-position: -2px -134px
+}
+
+@media (max-width: 800px) and (min-width: 600px) {
+    .sprite-technopedia {
+        zoom: .7;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 380px) {
+    .sprite-technopedia {
+        zoom: .5;
+    }
+}
+
+@media (max-width: 380px) and (min-width: 100px) {
+    .sprite-technopedia {
+        zoom: .4;
+    }
+}

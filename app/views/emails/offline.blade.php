@@ -35,10 +35,10 @@
                     {{ $school->address }}
                 </div>
                 <div>
-                    {{ $city->name }}
+                    {{ $school->city->name }}
                 </div>
                 <div>
-                    {{ $state->name }}
+                    {{ $school->city->state->name }}
                 </div>
             </div>
         </div>
@@ -114,8 +114,7 @@
         <div id="details">
             <ul>
                 <li>The exam is on 19th July, 2015.</li>
-                <li>Technopedia starts from the 15th of every month and ends on the 10th of next month.</li>
-                <li>The first Technopedia starts from January</li>
+                <li>You can download your admit card by clicking <a href="{{ route('admitcard') }}">here</a> and using the roll numbers and password given above.</li>
                 <li>In case of any discrepancy, <a href="http://technothlon.techniche.org/contact" target="_blank">Contact Us</a>. </li>
             </ul>
         </div>

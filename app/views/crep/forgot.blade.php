@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    Technopedia | Login
+    CityRep | Login
 @endsection
 @section('description')
-    Technopedia | Login
+    CityRep | Login
 @endsection
 @section('head')
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/technopedialogin.css') }}">
@@ -14,7 +14,7 @@
             <img src="{{ asset('images/mascot.png') }}">
         </div>
         <form method="post">
-            <input type="text" name="roll" value="{{ Input::old('roll') }}" placeholder="Roll Number" required style="text-align: center; font-size: 32px">
+            <input type="email" name="email" value="{{ Input::old('email') }}" placeholder="Email ID" required style="text-align: center; font-size: 32px">
             <div class="bar">
                 <i></i>
             </div>

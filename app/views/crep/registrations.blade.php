@@ -16,6 +16,17 @@
             Registrations
             <small>it starts here</small>
         </h1>
+        <div class="row">
+            <div class="col-sm-3">
+                <h4>Offline: {{ User::where('city_id',Auth::crep()->get()->city_id)->where('paid',1)->count() }}</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4>Online: {{ User::where('centre_city',Auth::crep()->get()->city_id.'0')->where('paid',0)->count() }}</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4>Collected in Summer: {{ User::where('city_id',Auth::crep()->get()->city_id)->where('paid',1)->where('status',1)->count() }}</h4>
+            </div>
+        </div>
     </section>
     <section class="content">
         @foreach($schools as $school_id)
@@ -36,6 +47,7 @@
                                 <th>Name 1</th>
                                 <th>Name 2</th>
                                 <th>Roll Number</th>
+                                <th>Password</th>
                                 <th>Email 1</th>
                                 <th>Email 2</th>
                                 <th>Contact 1</th>
@@ -47,10 +59,19 @@
                             <tbody>
 
                             @foreach(User::where('school_id',$school->id)->where('roll','LIKE','%'.$code.'0%')->get() as $user)
+                                <?php
+                                        try {
+                                            $pass = Crypt::decrypt($user->result_pass);
+                                        }
+                                        catch(Exception $e) {
+                                            $pass = 'NA';
+                                        }
+                                        ?>
                             <tr>
                                 <td>{{ $user->name1 }}</td>
                                 <td>{{ $user->name2 }}</td>
                                 <td>{{ $user->roll }}</td>
+                                <td>{{ $pass }}</td>
                                 <td>{{ $user->email1 }}</td>
                                 <td>{{ $user->email2 }}</td>
                                 <td>{{ $user->contact1 }}</td>
@@ -64,6 +85,7 @@
                                 <th>Name 1</th>
                                 <th>Name 2</th>
                                 <th>Roll Number</th>
+                                <th>Password</th>
                                 <th>Email 1</th>
                                 <th>Email 2</th>
                                 <th>Contact 1</th>
@@ -95,6 +117,7 @@
                                     <th>Name 1</th>
                                     <th>Name 2</th>
                                     <th>Roll Number</th>
+                                    <th>Password</th>
                                     <th>School</th>
                                     <th>Email 1</th>
                                     <th>Email 2</th>
@@ -106,11 +129,20 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach(User::where('roll','LIKE','%'.$code.'1%')->get() as $user)
+                                @foreach(User::where('centre_city',Auth::crep()->get()->city_id.'0')->where('paid',0)->get() as $user)
+                                    <?php
+                                    try {
+                                        $pass = Crypt::decrypt($user->result_pass);
+                                    }
+                                    catch(Exception $e) {
+                                        $pass = 'NA';
+                                    }
+                                    ?>
                                     <tr>
                                         <td>{{ $user->name1 }}</td>
                                         <td>{{ $user->name2 }}</td>
                                         <td>{{ $user->roll }}</td>
+                                        <td>{{ $pass }}</td>
                                         <td>{{ $user->school->name }}</td>
                                         <td>{{ $user->email1 }}</td>
                                         <td>{{ $user->email2 }}</td>
@@ -125,6 +157,7 @@
                                     <th>Name 1</th>
                                     <th>Name 2</th>
                                     <th>Roll Number</th>
+                                    <th>Password</th>
                                     <th>School</th>
                                     <th>Email 1</th>
                                     <th>Email 2</th>

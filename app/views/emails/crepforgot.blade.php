@@ -1,7 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: aneeshdash
- * Date: 6/5/15
- * Time: 2:38 PM
- */
+Dear {{ $crep->name }},
+Your password for password for CityRep Panel is: {{ $password }}
+You can change if after logging in by visiting you profile (top right corner of webpage in the CityRep Panel).

@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Technothlon Admit Card</title>
+    <title>{{ School::find($school)->name }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 {{--    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />--}}
     <style>
         table {
-            font-size: 14px;
+            font-size: 10px;
             text-align: left;
         }
         @page { margin: 10px }
@@ -50,79 +50,71 @@
 <?php
         $i = 0;
     ?>
-@foreach(User::where('school_id',$school)->where('paid',1)->get() as $user)
+@foreach(User::where('school_id',$school)->where('paid',1)->take(1)->get() as $user)
     <?php
             $pass = Crypt::decrypt($user->result_pass);
     ?>
-<div style="width: 820px; word-wrap: break-word">
-    <div style="width: 49%;float: left;text-align: center;">
-        <img src="{{ asset('images/technothlon.png') }}" style="width: 300px">
-        <table>
+        <table style=" border-bottom: 1px dashed #000; padding: 16px 8px; page-break-inside: avoid; text-transform: capitalize !important">
+            <tbody>
             <tr>
-                <th>Team</th>
-                <th>:</th>
-                <td> {{ ucwords(strtolower($user->name1)) }} & {{ ucwords(strtolower($user->name2)) }}</td>
+                <td style="vertical-align:top">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th style="text-align: center" colspan="2"><img height="67" width="300" title="" alt="" src="http://technothlon.techniche.org/images/technothlon-nav-logo.png"></th>
+                        </tr>
+                        <tr>
+                            <td style="width: 98px"><strong>Team:</strong></td>
+                            <td style="width: 300px">{$name[0]} & {$name[1]}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 98px"><strong>Roll Number:</strong></td>
+                            <td style="width: 300px">{$roll}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 98px"><strong>Medium:</strong></td>
+                            <td style="width: 300px">{$lang} ({$squad})</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 98px"><strong>Examination:</strong></td>
+                            <td style="width: 300px">13 July 2014, 10:30 am - 01:00 pm</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 98px; vertical-align: top"><strong>Centre:</strong></td>
+                            <td style="width: 300px">{$centreName}, {$centreAddress}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="width: 350px"><p style="font-size: 9px"><strong>Instructions:</strong><br>
+                                    &bull; The candidate must keep this hall ticket at the time of Examination and present on<br>
+                                    &nbsp; demand to the invigilator or any other person authorized on this behalf.</p>
+                            </td>
+                        </tr>
+                        </tbody></table>
+                </td>
+                <td style="vertical-align:top">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="width: 80px"><strong>Password:</strong></td>
+                            <td style="width: 300px">abcdef</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 80px"><strong>Result:</strong></td>
+                            <td style="width: 300px"><em>http://technothlon.techniche.org/results</em><br><br>or scan the QR code</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><p style="font-size: 9px"><br>
+                                    &bull; The candidate should report at the centre by 09.30 a.m.<br>
+                                    &bull; The candidate must bring a black ball point pen to the examination centre.<br>
+                                    &bull; The candidate is required to keep the hall ticket safely even after the exam as the<br>
+                                    &nbsp; password mentioned here is required to get access to the result.</p></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
             </tr>
-            <tr>
-                <th>Roll Number</th>
-                <th>:</th>
-                <td> {{ $user->roll }}</td>
-            </tr>
-            <tr>
-                <th>Squad</th>
-                <th>:</th>
-                <td> {{ $user->squad }}</td>
-            </tr>
-            <tr>
-                <th>Medium</th>
-                <th>:</th>
-                <td> @if($user->language == 'en') English @else Hindi @endif</td>
-            </tr>
-            <tr>
-                <th>Timing</th>
-                <th>:</th>
-                <td>19th July, 2015, 10:30am - 1:00pm</td>
-            </tr>
-            <tr>
-                <th>Centre</th>
-                <th>:</th>
-                <td><strong> ({{ $user->centre->code }}){{ $user->centre->name }}</strong><br>
-                    {{ $user->centre->address }}<br>
-                    {{ $user->centre->city->name }},{{ $user->centre->city->state->name }}</td>
-            </tr>
+            </tbody>
         </table>
-    </div>
-    <div style="width: 49%;float: left">
-        <div style="width: auto">
-            <table style="border: solid;border-width: 2px">
-                <tr>
-                    <th colspan="3" style="text-align: center"><u>Result</u></th>
-                </tr>
-                <tr>
-                    <th>Link</th>
-                    <th>:</th>
-                    <td>http://technothlon.techniche.org/result</td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <th>:</th>
-                    <td>{{ $pass }}</td>
-                </tr>
-                <tr>
-                    <td colspan="3"><i>Password is different from the one used for technopedia.</i></td>
-                </tr>
-            </table>
-        </div>
-        <p style="text-align: center"><b><u>Instructions</u></b></p>
-        <ol>
-            <li>The admit card must be presented for verification to the invigilator or any other authorized person.</li>
-            <li>The candidates must carry their School Identity Card to the examination hall.</li>
-            <li>The candidates should report to the examinaiton hall by 9:30am.</li>
-            <li>The candidates must bring a black ball point pen to the examination centre.</li>
-            <li>The hall ticket must be preserved even after the examinaiton as it contains password required to access result.</li>
-        </ol>
-    </div>
-</div>
 <div style="clear: both"><hr></div>
     <?php $i += 1; ?>
     @if($i % 4 == 0)

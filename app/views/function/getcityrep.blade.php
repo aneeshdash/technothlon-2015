@@ -1,5 +1,5 @@
 <div id="city-rep-heading">City Representatives in your city</div>
-@foreach(CityRep::where('city_id', $city)->get() as $cityrep)
+@foreach(CityRep::where('city_id', $city)->orderBy('priority','desc')->get() as $cityrep)
 <div class="person">
 <div class="name">
     @if($cityrep->gender === 'MALE')

@@ -7,20 +7,20 @@
  */
 
 class City extends Eloquent {
-
+    use SoftDeletingTrait;
     protected $table='cities';
 
     function school() {
-        return $this->belongsToMany('School');
+        return $this->hasMany('School');
     }
     function registration() {
-        return $this->belongsToMany('User');
+        return $this->hasMany('User');
     }
     function cityrep() {
-        return $this->belongsToMany('CityRep');
+        return $this->hasMany('CityRep');
     }
     function centre() {
-        return $this->belongsToMany('Centre');
+        return $this->hasMany('Centre');
     }
     function state() {
         return $this->belongsTo('State');

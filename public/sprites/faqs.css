@@ -1,0 +1,35 @@
+.sprite-faqs {
+    display: inline-block;
+    overflow: hidden;
+    background: url(faqs.png) no-repeat;
+}
+
+.faq-logo {
+    width: 123px;
+    height: 115px;
+    background-position: -2px -2px
+}
+
+.faqs-title {
+    width: 700px;
+    height: 76px;
+    background-position: -127px -2px
+}
+
+@media (max-width: 800px) and (min-width: 600px) {
+    .sprite-faqs {
+        zoom: .7;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 380px) {
+    .sprite-faqs {
+        zoom: .5;
+    }
+}
+
+@media (max-width: 380px) and (min-width: 100px) {
+    .sprite-faqs {
+        zoom: .4;
+    }
+}

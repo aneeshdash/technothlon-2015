@@ -1,4 +1,4 @@
-@extends('crep.master')
+@extends('admin.master')
 @section('content')
     <section class="content-header">
         <h1>
@@ -22,40 +22,55 @@
                             <div class="form-group">
                                 <label for="name" class="control-label col-sm-2">Name:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" id="name" class="form-control" placeholder="Name" name="name" value="{{ Auth::crep()->get()->name }}" required>
+                                    <input type="text" id="name" class="form-control" placeholder="Name" name="name" value="{{ Auth::admin()->get()->name }}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="username" class="control-label col-sm-2">Username:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" id="username" class="form-control" placeholder="Username" name="username" value="{{ Auth::admin()->get()->username }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Email: </label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" placeholder="Email ID" name="email" value="{{ Auth::crep()->get()->email }}" required>
+                                    <input type="email" class="form-control" placeholder="Email ID" name="email" value="{{ Auth::admin()->get()->email }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Contact: </label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" placeholder="Contact Number" name="contact" value="{{ Auth::crep()->get()->contact_home }}" required>
+                                    <input type="number" class="form-control" placeholder="Contact Number" name="contact" value="{{ Auth::admin()->get()->contact }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Webmail: </label>
+                                <label class="col-sm-2 control-label">Techno Webmail: </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="Webmail ID" name="webmail" value="{{ Auth::crep()->get()->webmail }}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Techno Webmail ID" name="technomail" value="{{ Auth::admin()->get()->techno_email }}">
+                                        <div class="input-group-addon">@technothlon.techniche.org</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Gender: </label>
                                 <div class="col-sm-10">
-                                    <select name="gender">
-                                        <option value="MALE" @if(Auth::crep()->get()->gender == 'MALE')selected @endif>Male</option>
-                                        <option value="FEMALE" @if(Auth::crep()->get()->gender == 'FEMALE')selected @endif>Female</option>
+                                    <select name="gender" class="form-control">
+                                        <option value="MALE" @if(Auth::admin()->get()->gender == 'MALE')selected @endif>Male</option>
+                                        <option value="FEMALE" @if(Auth::admin()->get()->gender == 'FEMALE')selected @endif>Female</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">City: </label>
+                                <label class="col-sm-2 control-label">Region: </label>
                                 <div class="col-sm-10">
-                                    <label class="control-label">{{ Auth::crep()->get()->city->name }}</label>
+                                    <select name="region" class="form-control">
+                                        <option value="NORTH" @if(Auth::admin()->get()->region == 'NORTH')selected @endif>North</option>
+                                        <option value="EAST" @if(Auth::admin()->get()->region == 'EAST')selected @endif>East</option>
+                                        <option value="WEST" @if(Auth::admin()->get()->region == 'WEST')selected @endif>West</option>
+                                        <option value="CENTRAL" @if(Auth::admin()->get()->region == 'CENTRAL')selected @endif>Central</option>
+                                        <option value="SOUTH" @if(Auth::admin()->get()->region == 'SOUTH')selected @endif>South</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="box-footer text-right">
@@ -105,7 +120,7 @@
         $('#chpass').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
-                url: '{{ route('crepchpass') }}',
+                url: '{{ route('adminchpass') }}',
                 method: 'POST',
                 data: $('#chpass').serialize()
             })

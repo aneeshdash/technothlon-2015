@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'log',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,8 +28,9 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
-
+    'host' => 'smtp.mailgun.org',
+//	'host' => 'smtp.mandrillapp.org',
+//	'host' => 'smtp.gmail.com',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -54,7 +55,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'noreply@technothlon.techniche.org', 'name' => 'Technothlon'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,8 +81,8 @@ return array(
 	|
 	*/
 
-	'username' => null,
-
+	'username' => 'technothlon.heads@gmail.com',
+//	'username' => 'aneeshdash@gmail.com',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Server Password
@@ -93,8 +94,8 @@ return array(
 	|
 	*/
 
-	'password' => null,
-
+//	'password' => 'd9jnjtiwFCfowAQtBB9F4g',
+	'password' => 'Techno15rocks',
 	/*
 	|--------------------------------------------------------------------------
 	| Sendmail System Path

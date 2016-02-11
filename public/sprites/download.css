@@ -1,0 +1,35 @@
+.sprite-download {
+    display: inline-block;
+    overflow: hidden;
+    background: url(download.png) no-repeat;
+}
+
+.download-logo {
+    width: 123px;
+    height: 115px;
+    background-position: -2px -2px
+}
+
+.download-title {
+    width: 477px;
+    height: 76px;
+    background-position: -127px -2px
+}
+
+@media (max-width: 800px) and (min-width: 600px) {
+    .sprite-download {
+        zoom: .7;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 380px) {
+    .sprite-download {
+        zoom: .5;
+    }
+}
+
+@media (max-width: 380px) and (min-width: 100px) {
+    .sprite-download {
+        zoom: .4;
+    }
+}

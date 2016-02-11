@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    CRep Login | Technothlon
+    Admin Login | Technothlon
     @endsection
 @section('head')
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -14,26 +14,22 @@
         <h1>Let's get started.</h1>
         <p>This will be an amazing experience</p>
         @if(Session::has('error'))<p style="color: red">{{ Session::get('error') }}</p>@endif
-        @if($errors->has())
-            <p style="color: red">Captha Validation Failed</p>
-        @endif
-        <form method="post" action="{{ route('creplogin') }}">
+        <form method="post" action="{{ route('adminlogin') }}">
             <div class="input">
                 <div class="blockinput">
-                    <i class="fa fa-envelope"></i><input style="border: none; box-shadow: none" type="mail" placeholder="Email" name="email">
+                    <i class="fa fa-envelope"></i><input style="border: none; box-shadow: none" type="text" placeholder="Username" name="username">
                 </div>
                 <div class="blockinput">
                     <i class="fa fa-lock"></i><input style="border: none; box-shadow: none" type="password" placeholder="Password" name="password">
                 </div>
             </div>
-            <a href="{{ route('crepforgot') }}" style="font-size: medium">Forgot Password?</a>
+            <a href="{{ route('adminforgot') }}" style="font-size: medium">Forgot Password?</a>
             <div class="form-group">
                 <label style="font-size: 14px">
                     <input type="checkbox" name="remember" checked/>
                     Remember Me
                 </label>
                 </div>
-{{--            {{ Form::captcha() }}--}}
             <input type="submit" value="Login">
         </form>
     </div>

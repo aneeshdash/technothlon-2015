@@ -15,12 +15,12 @@ return array(
 	*/
 
 	'mailgun' => array(
-		'domain' => '',
-		'secret' => '',
+		'domain' => 'techniche.org',
+		'secret' => 'key-7c4b03a1c4b68aa332a76e2ce11e7e31',
 	),
 
 	'mandrill' => array(
-		'secret' => '',
+		'secret' => 'd9jnjtiwFCfowAQtBB9F4g',
 	),
 
 	'stripe' => array(

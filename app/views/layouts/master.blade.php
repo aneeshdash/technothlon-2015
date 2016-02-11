@@ -99,35 +99,32 @@
     </div>
         <div class="container">
             <div style="clear: both">
-    <div class="text" style="text-align: center; color: #999; font-size: 12px; margin:0 auto;">
-        <noscript style="line-height: 14px; color: #d03100">If your browser supports JavaScript, then please enable it
-            or you can download latest version of <a href="http://www.google.com/chrome" target="_blank">Google
-                Chrome</a> or <a href="http://www.mozilla.org/en-US/firefox/all/" target="_blank">Mozilla Firefox</a> .
-        </noscript>
+                <div class="text" style="text-align: center; color: #999; font-size: 12px; margin:0 auto;">
+                    <noscript style="line-height: 14px; color: #d03100">If your browser supports JavaScript, then please enable it
+                        or you can download latest version of <a href="http://www.google.com/chrome" target="_blank">Google
+                            Chrome</a> or <a href="http://www.mozilla.org/en-US/firefox/all/" target="_blank">Mozilla Firefox</a> .
+                    </noscript>
 
-        <div style="text-align: center">
-            <div style="vertical-align: top; margin-top: 0; margin-right: 4px" class="fb-like"
-                 data-href="http://www.facebook.com/technothlon.techniche" data-layout="button_count" data-action="like"
-                 data-show-faces="false" data-share="false"></div>
-            <div style="text-align: center"><a
-                    href="https://twitter.com/TheTechnothlon" class="twitter-follow-button" data-show-count="true"
-                    data-size="large"
-                    data-show-screen-name="true" data-dnt="true"></a></div>
-            <iframe class="btn" frameborder="0" border="0" scrolling="no" allowtransparency="true" height="24"
-                    width="160"
-                    src="http://platform.tumblr.com/v1/follow_button.html?button_type=1&tumblelog=technothlon&color_scheme=dark"></iframe>
-            <div class="g-follow" data-annotation="bubble" data-height="24"
-                 data-href="//plus.google.com/100939774615480713285" data-rel="publisher"></div>
-            <div data-height="24" class="g-plusone"
-                 data-href="https://plus.google.com/+technothlon"></div>
-        </div>
-        <div style="font-size: 0.7rem; text-align: center">
-            <a class="foo" href="{{ route('downloads') }}">Downloads</a> &nbsp;
-            <a class="foo" href="{{ route('feedback') }}">Send
-                Feedback</a>
-        </div>
-    </div>
+                    <div style="text-align: center">
+                        <div style="vertical-align: top; margin-top: 0; margin-right: 4px" class="fb-like"
+                             data-href="http://www.facebook.com/technothlon.techniche" data-layout="button_count" data-action="like"
+                             data-show-faces="false" data-share="false"></div>
+                        <iframe class="btn" frameborder="0" border="0" scrolling="no" allowtransparency="true" height="24"
+                                width="160"
+                                src="http://platform.tumblr.com/v1/follow_button.html?button_type=1&tumblelog=technothlon&color_scheme=dark"></iframe>
+                        <div class="g-follow" data-annotation="bubble" data-height="24"
+                             data-href="//plus.google.com/100939774615480713285" data-rel="publisher"></div>
+                        <div data-height="24" class="g-plusone"
+                             data-href="https://plus.google.com/+technothlon"></div>
+                    </div>
+                    <div style="font-size: 0.7rem; text-align: center">
+                        <a class="foo" href="{{ route('downloads') }}">Downloads</a> &nbsp;
+                        <a class="foo" href="{{ route('feedback') }}">Send
+                            Feedback</a>
+                    </div>
+                </div>
 </div> </div>
+    @yield('script')
 <script src="{{ asset('js/menu.js') }}" type="text/javascript"></script>   {{--script for drop down menu--}}
 <script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];

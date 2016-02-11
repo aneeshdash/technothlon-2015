@@ -7,13 +7,14 @@
  */
 
 class Centre extends Eloquent {
+    use SoftDeletingTrait;
     protected $table='centres';
 
     function city() {
-        return $this->hasOne('City');
+        return $this->belongsTo('City');
     }
     function registration() {
-        return $this->belongsToMany('User');
+        return $this->hasMany('User');
     }
 
 } 

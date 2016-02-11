@@ -13,16 +13,13 @@ class School extends Eloquent {
     protected $table='schools';
 
     function city() {
-        return $this->hasOne('City');
+        return $this->belongsTo('City');
     }
     function registrations() {
-        return $this->belongsToMany('User');
+        return $this->hasMany('User');
     }
-    function name() {
-        return $this->hasOne('name');
-    }
-    function  addr() {
-        return $this->hasOne('addr');
+    function state() {
+        return $this->belongsTo('State');
     }
 
 } 

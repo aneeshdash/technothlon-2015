@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technothlon Registration Details</title>
+    <title>Document</title>
 </head>
 <body>
 <div style="display: table; margin: 0 auto">
     <div style="text-align: center">
-        <img src="technothlon.png"; width="300px">
+        <img src="http://technothlon.techniche.org/images/technothlon.png"; width="300px">
     </div><br><br>
     <div style="display: inline-block">
-        Dear ,<br>
+        Dear {{ $name }},<br>
         You have successfully registered for Technothlon 2015 with the following details: <br><br>
         <div id="school">
             <div style="display: inline-block">
@@ -29,25 +29,25 @@
             </div>
             <div style="display: inline-block; margin-left: 10px">
                 <div>
-
+                    {{ $school->name }}
                 </div>
                 <div>
-
+                    {{ $school->address }}
                 </div>
                 <div>
-
+                    {{ $city->name }}
                 </div>
                 <div>
-
+                    {{ $state->name }}
                 </div>
             </div>
         </div>
         <div><br>
             <div style="display: inline-block">
-                Squad:
+                Squad: {{ $user->squad }}
             </div>
             <div style="display: inline-block; margin-left: 20px">
-                Medium:
+                Medium: {{ $user->language }}
             </div>
         </div><br>
         <div id="details">
@@ -65,13 +65,13 @@
                 </div>
                 <div style="display: inline-block; margin-left: 10px">
                     <div>
-
+                        {{ $user->name1 }}
                     </div>
                     <div>
-
+                        {{ $user->email1 }}
                     </div>
                     <div>
-
+                        +91{{ $user->contact1 }}
                     </div>
                 </div>
             </div>
@@ -89,13 +89,13 @@
                 </div>
                 <div style="display: inline-block; margin-left: 10px">
                     <div>
-
+                        {{ $user->name2 }}
                     </div>
                     <div>
-
+                        {{ $user->email2 }}
                     </div>
                     <div>
-
+                        +91{{ $user->contact2 }}
                     </div>
                 </div>
             </div>
@@ -108,8 +108,8 @@
             <div>Password:</div>
         </div>
         <div style="display: inline-block;">
-            <div></div>
-            <div></div>
+            <div>{{ $user->roll }}</div>
+            <div>{{ $password }}</div>
         </div><br><br>
         <div id="details">
             <ul>

@@ -20,7 +20,7 @@
             <img src="{{ asset('images/mascot.png') }}"; style="height: 200px">
         </div>
         <div style="display: inline-block">
-            Congratulations {{ Auth::user()->name1 }} & {{ Auth::user()->name2 }} , <br>
+            Congratulations {{ Auth::user()->get()->name1 }} & {{ Auth::user()->get()->name2 }} , <br>
             You have attempted technopedia for this month and
             your score is {{ Session::get('score') }}.<br>
             Technopedia is held from 15th of one month till the 10th of the next month.<br>

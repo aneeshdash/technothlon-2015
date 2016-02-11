@@ -40,9 +40,9 @@
     </style>
 </head>
 <body>
-{{--@foreach(User::where('school_id',$school)->where('paid',1)->get() as $user)--}}
 <?php
-$pass = str_random(6);
+        $user = Auth::user()->get();
+        $pass = Crypt::decrypt($user->result_pass);
 ?>
 <div style="width: 790px; word-wrap: break-word;">
     <br>
@@ -55,7 +55,7 @@ $pass = str_random(6);
             <tr>
                 <th>Name 1</th>
                 <th>:</th>
-                <td>{{ $user->name }}</td>
+                <td>{{ ucwords(strtolower($user->name1)) }}</td>
             </tr>
             <tr>
                 <th>Contact 1</th>
@@ -65,40 +65,12 @@ $pass = str_random(6);
             <tr>
                 <th>Email 1</th>
                 <th>:</th>
-                <td>{{ $user->conact2 }}</td>
+                <td>{{ $user->email1 }}</td>
             </tr>
             <tr>
                 <th>Squad</th>
                 <th>:</th>
                 <td>{{ $user->squad }}</td>
-            </tr>
-            <tr>
-                <th>---------------------</th>
-            </tr>
-            <tr>
-                <th>School Name</th>
-                <th>:</th>
-                <td>{{ $user->school->name }}</td>
-            </tr>
-            <tr>
-                <th>School Addres:</th>
-                <th>:</th>
-                <td>{{ $user->school->address }}</td>
-            </tr>
-            <tr>
-                <th>Pincode</th>
-                <th>:</th>
-                <td>{{ $user->school->pincode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <th>:</th>
-                <td>{{ $user->city->name }}</td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <th>:</th>
-                <td>{{ $user->state->name }}</td>
             </tr>
         </table>
     </div>
@@ -107,7 +79,7 @@ $pass = str_random(6);
             <tr>
                 <th>Name 2</th>
                 <th>:</th>
-                <td>{{ $user->name2 }}</td>
+                <td>{{ ucwords(strtolower($user->name1)) }}</td>
             </tr>
             <tr>
                 <th>Contact 2</th>
@@ -127,7 +99,35 @@ $pass = str_random(6);
         </table>
     </div>
 </div>
+<div style="clear: both"></div><br>
 <div style="clear: both;text-align: center">
+    <table style="font-size: 18px;">
+        <tr>
+            <th>School Name</th>
+            <th>:</th>
+            <td>{{ $user->school->name }}</td>
+        </tr>
+        <tr>
+            <th>School Addres</th>
+            <th>:</th>
+            <td>{{ $user->school->address }}</td>
+        </tr>
+        <tr>
+            <th>Pincode</th>
+            <th>:</th>
+            <td>{{ $user->school->pincode }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <th>:</th>
+            <td>{{ $user->city->name }}</td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <th>:</th>
+            <td>{{ $user->city->state->name }}</td>
+        </tr>
+    </table>
     <br><br><br><br>
     <div style="width: 32%;float: left;">
         <p>___________________________</p>
@@ -154,12 +154,12 @@ $pass = str_random(6);
             <tr>
                 <th>Name 1</th>
                 <th>:</th>
-                <td>{{ $user->name1 }}</td>
+                <td>{{ ucwords(strtolower($user->name1)) }}</td>
             </tr>
             <tr>
                 <th>Name 2</th>
                 <th>:</th>
-                <td>{{ $user->name2 }}</td>
+                <td>{{ ucwords(strtolower($user->name2)) }}</td>
             </tr>
             <tr>
                 <th>Roll Number</th>
@@ -225,10 +225,10 @@ $pass = str_random(6);
 <b>Payment of Rs. 100 Received.</b> (To be handed to participants)<br><br>
 <div style="width: 700px; word-wrap: break-word">
     <div style="text-align: right">
+        <br><br>
         <p>_________________________________</p>
         <p>City Representative</p>
     </div>
 </div>
-{{--@endforeach--}}
 </body>
 </html>

@@ -51,6 +51,24 @@ Contact Us
     <br>
 </div>
 <div class="container">
+    <h1 style="text-align: center">City Representative</h1>
+    <div style="text-align: center; margin: 32px 0;">
+        <label>
+            <span style="color: #d03100; font-weight: 300">Search your city</span><br>
+            <select name="state" id="state">
+                <option value="">Select State</option>
+                @foreach(State::all() as $state)
+                    <option value="{{ $state->id }}">{{ $state->name }}</option>
+                @endforeach
+            </select>
+            <select disabled id="city">
+                <option value="">Select City</option>
+            </select>
+        </label>
+        <div style="text-align: left; margin-left: 50px" id="city-rep"></div>
+    </div>
+</div>
+<div class="container">
     <h1 style="text-align: center">Organizing team</h1>
     <div class="in-container" id="contacts" style="text-align: center">
         <div class="person">
@@ -199,4 +217,44 @@ Contact Us
         </div>
     </div>
     </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+    });
+    $('#state').change(function () {
+        $('#city-rep').hide();
+        if($('#state').val() === "") {
+            $('#city').prop('disabled', 1);
+        }
+        else {
+            $('#city').prop('disabled', 0);
+            var city = "{{ route('citywcrep') }}";
+            $.ajax({
+                url: city,
+                method: 'post',
+                data: {state: $(this).val()},
+                success: function(result) {
+                    $('#city').html('<option value="">Select City</option>'+result);
+                }
+            })
+        }
+    });
+
+    $('#city').change(function () {
+        if($('#city').val() !== "") {
+            var cityrep = "{{ route('getcityrep') }}";
+            $.ajax({
+                url: cityrep,
+                method: 'post',
+                data: {city: $(this).val()},
+                success: function(result) {
+                    $('#city-rep').html(result);
+                }
+            })
+            $('#city-rep').show();
+        }
+        else {
+            $('#city-rep').hide();
+        }
+    });
+</script>
         @endsection

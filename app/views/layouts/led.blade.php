@@ -12,12 +12,25 @@
 @section('body')
     <div class="container">
         <div class="in-container">
-            <div id="slides" style="height: 365px">
-                <img src="{{ asset('images/led.png') }}">
-                <img src="{{ asset('img/led3.jpg') }}" alt="Photo by: Missy S Link: http://www.flickr.com/photos/listenmissy/5087404401/">
-                <img src="{{ asset('img/example-slide-2.jpg') }}" alt="Photo by: Daniel Parks Link: http://www.flickr.com/photos/parksdh/5227623068/">
-                <img src="{{ asset('img/example-slide-3.jpg') }}" alt="Photo by: Mike Ranweiler/">
-                <img src="{{ asset('img/example-slide-4.jpg') }}" alt="Photo by: Stuart SeegerLink: http://www.flickr.com/photos/stuseeger/97577796/">
+            <div id="slides" style="height: 600px">
+                <img src="{{ asset('LED/led.png') }}">
+                <img src="{{ asset('LED/1.jpg') }}">
+                <img src="{{ asset('LED/2.jpg') }}">
+                <img src="{{ asset('LED/3.jpg') }}">
+                <img src="{{ asset('LED/4.jpg') }}">
+                <img src="{{ asset('LED/5.jpg') }}">
+                <img src="{{ asset('LED/6.jpg') }}">
+                <img src="{{ asset('LED/8.jpg') }}">
+                <img src="{{ asset('LED/9.jpg') }}">
+                <img src="{{ asset('LED/10.jpg') }}">
+                <img src="{{ asset('LED/11.jpg') }}">
+                <img src="{{ asset('LED/12.jpg') }}">
+                <img src="{{ asset('LED/13.jpg') }}">
+                <img src="{{ asset('LED/14.jpg') }}">
+                <img src="{{ asset('LED/15.jpg') }}">
+                <img src="{{ asset('LED/16.jpg') }}">
+                <img src="{{ asset('LED/17.jpg') }}">
+                <img src="{{ asset('LED/18.jpg') }}">
             </div>
         </div>
         <div class="in-container">
@@ -42,13 +55,13 @@
             inspiring young minds. Those who think, they are capable of putting a transformational impact on the
             students and being our partners in inspiring young minds may join us and <a href="{{ route('contact') }}" target="_blank">contact us</a> for other details.<br>
         </div>
-        </div>
+    </div>
     <script src="{{ asset('js/jquery.slides.js') }}"></script>
     <script>
         $(function() {
             $('#slides').slidesjs({
-                        width: 467,
-                        height: 365
+                        width: 800,
+                        height: 600
                     }
             );
         });

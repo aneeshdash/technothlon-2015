@@ -33,21 +33,37 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
+Route::filter('auth.cityrep', function()
 {
-	if (Auth::guest())
+	if (Auth::crep()->guest())
 	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('login');
-		}
+		return Redirect::guest('cityrep/login');
+//		if (Request::ajax())
+//		{
+//			return Response::make('Unauthorized', 401);
+//		}
+//		else
+//		{
+//			return Redirect::guest('login')->with('url', Request::fullUrl());
+//		}
 	}
 });
 
+Route::filter('auth.user',function()
+{
+    if(Auth::user()->guest())
+    {
+        return Redirect::guest('result/login');
+    }
+});
+
+Route::filter('auth.admin',function()
+{
+    if(Auth::admin()->guest())
+    {
+        return Redirect::guest('toor/login');
+    }
+});
 
 Route::filter('auth.basic', function()
 {

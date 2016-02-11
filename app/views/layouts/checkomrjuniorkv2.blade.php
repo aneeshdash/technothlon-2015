@@ -30,23 +30,23 @@
     <input type="text" name="q7" size="1" style="position: absolute; top: 270px; left: 800px" value="{{ $data->q7 }}">
     <input type="text" name="q8" size="1" style="position: absolute; top: 285px; left: 800px" value="{{ $data->q8 }}">
     <input type="text" name="q9" size="1" style="position: absolute; top: 300px; left: 800px" value="{{ $data->q9 }}">
-    <input type="text" name="q10" size="2" style="position: absolute; top: 315px; left: 800px" value="{{ $data->q10 }}">
-    <input type="text" name="q11" size="2" style="position: absolute; top: 330px; left: 800px" value="{{ $data->q11 }}">
-    <input type="text" name="q12" size="2" style="position: absolute; top: 345px; left: 800px" value="{{ $data->q12 }}">
-    <input type="text" name="q13" size="2" style="position: absolute; top: 360px; left: 800px" value="{{ $data->q13 }}">
+    <input type="text" name="q19" size="2" style="position: absolute; top: 315px; left: 800px" value="{{ $data->q19 }}">
+    <input type="text" name="q20" size="2" style="position: absolute; top: 330px; left: 800px" value="{{ $data->q20 }}">
+    <input type="text" name="q21" size="2" style="position: absolute; top: 345px; left: 800px" value="{{ $data->q21 }}">
+    <input type="text" name="q22" size="2" style="position: absolute; top: 360px; left: 800px" value="{{ $data->q22 }}">
     <input type="text" name="q14" size="1" style="position: absolute; top: 480px; left: 30px" value="{{ $data->q14 }}">
     <input type="text" name="q15" size="1" style="position: absolute; top: 495px; left: 30px" value="{{ $data->q15 }}">
     <input type="text" name="q16" size="1" style="position: absolute; top: 510px; left: 30px" value="{{ $data->q16 }}">
     <input type="text" name="q17" size="1" style="position: absolute; top: 525px; left: 30px" value="{{ $data->q17 }}">
     <input type="text" name="q18" size="1" style="position: absolute; top: 540px; left: 30px" value="{{ $data->q18 }}">
-    <input type="number" name="q19" size="1" style="position: absolute; top: 450px; left: 270px; height: 20px" value="{{ $data->q19 }}">
-    <input type="number" name="q20" size="1" style="position: absolute; top: 450px; left: 330px; height: 20px" value="{{ $data->q20 }}">
-    <input type="number" name="q21" size="1" style="position: absolute; top: 450px; left: 390px; height: 20px" value="{{ $data->q21 }}">
-    <input type="number" name="q22" size="1" style="position: absolute; top: 450px; left: 450px; height: 20px" value="{{ $data->q22 }}">
+    <input type="number" name="q10" size="1" style="position: absolute; top: 450px; left: 270px; height: 20px" value="{{ $data->q10 }}">
+    <input type="number" name="q11" size="1" style="position: absolute; top: 450px; left: 330px; height: 20px" value="{{ $data->q11 }}">
+    <input type="number" name="q12" size="1" style="position: absolute; top: 450px; left: 390px; height: 20px" value="{{ $data->q12 }}">
+    <input type="number" name="q13" size="1" style="position: absolute; top: 450px; left: 450px; height: 20px" value="{{ $data->q13 }}">
     <input type="hidden" name="q23" value="">
     <input type="hidden" name="q24" value="">
-    <input type="hidden" name="conf1" value="">
-    <input type="hidden" name="conf2" value="">
+    <input type="text" name="conf1" value="{{ $data->conf1 }}" style="position: absolute; top: 150px; left: 850px; height: 30px; width: 50px" placeholder="Conf1">
+    <input type="text" name="conf2" value="{{ $data->conf2 }}" style="position: absolute; top: 150px; left: 950px; height: 30px; width: 50px" placeholder="Conf2">
     <input type="hidden" name="id" value="{{ $data->id }}">
     <input type="submit" name="submit" value="Submit" style="position: fixed; top: 50px; left: 850px">
     <input type="submit" name="error" value="Error" style="position: fixed; top: 50px; left: 950px">
@@ -54,6 +54,6 @@
     <input type="submit" name="error" value="No School" style="position: fixed; top: 10px; left: 950px">
     <input type="submit" name="error" value="No Team" style="position: fixed; top: 10px; left: 1050px">
 </form>
-<img src="{{ asset(str_replace('\\','/',$data->path)) }}">
+<img src="{{ asset(str_replace('.tif','.bmp',str_replace('\\','/',$data->path))) }}">
 </body>
 </html>

@@ -1,0 +1,65 @@
+.sprite-registrations {
+    display: inline-block;
+    overflow: hidden;
+    background: url('registrations.png') no-repeat;
+}
+
+.registrations-logo {
+    width: 123px;
+    height: 115px;
+    background-position: -2px -2px
+}
+
+.registrations-title {
+    width: 477px;
+    height: 76px;
+    background-position: -127px -2px
+}
+
+@media (max-width: 800px) and (min-width: 600px) {
+    .sprite-registrations {
+        zoom: .7;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 380px) {
+    .sprite-registrations {
+        zoom: .5;
+    }
+}
+
+@media (max-width: 380px) and (min-width: 100px) {
+    .sprite-registrations {
+        zoom: .4;
+    }
+}
+
+.sprite-contact {
+    display: inline-block;
+    overflow: hidden;
+    background: url(contact.png) no-repeat;
+}
+
+.boy {
+    width: 35px;
+    height: 40px;
+    background-position: -113px -2px
+}
+
+.girl {
+    width: 35px;
+    height: 40px;
+    background-position: -76px -2px
+}
+
+.email {
+    width: 35px;
+    height: 40px;
+    background-position: -39px -2px
+}
+
+.phone {
+    width: 35px;
+    height: 40px;
+    background-position: -2px -2px
+}

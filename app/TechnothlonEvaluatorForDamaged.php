@@ -259,17 +259,14 @@
             $this->loadQuestions($data);
             $this->loadBetting($data);
             $this->loadMarkingScheme($data);
-
             $this->roll         = $data['Roll'];
             $this->phone        = $data['Mobile'];
-            $this->centreNumber = $data['Centre'];
+//            $this->centreNumber = $data['Centre'];
+            $temp        = explode('/', $data['Filename']);
 
-            $temp        = explode('\\', $data['Filepath']);
-            $this->city  = trim($temp[3]);
-            $this->squad = trim(strtoupper($temp[2]));
-            array_shift($temp);
-            array_shift($temp);
-            $this->filename = implode('/', $temp) . '/' . $data['Filename1'];
+            $this->city  = trim($temp[1]);
+            $this->squad = trim(strtoupper($temp[0]));
+            $this->filename =  $data['Filename'];
             $this->validateRollNumber();
             $this->validatePhoneNumber();
         }
@@ -292,7 +289,7 @@
         {
             $this->questions = array();
             foreach ($questions as $question => $answer) {
-                if (1 === preg_match('/Q[0-9]+/', $question)) {
+                if (1 === preg_match('/[Qq][0-9]+/', $question)) {
                     $this->questions[intval(substr($question, 1))] = intval($answer);
                 }
             }
@@ -303,8 +300,8 @@
         {
             $this->betting = array();
             foreach ($questions as $question => $answer) {
-                if (1 === preg_match('/B[0-9]+/', $question)) {
-                    $this->betting[intval(substr($question, 1))] = intval($answer);
+                if (1 === preg_match('/[Bb][0-9]+/', $question)) {
+                    $this->betting[intval(substr($question, 1))] = intval($answer = (($answer == 'Y') ? 2 : $answer));
                 }
             }
             ksort($this->betting);
@@ -314,7 +311,7 @@
         {
             $this->markingScheme = array();
             foreach ($questions as $question => $answer) {
-                if (1 === preg_match('/M[0-9]+/', $question)) {
+                if (1 === preg_match('/[Mm][0-9]+/', $question)) {
                     $this->markingScheme[intval(substr($question, 1))] = intval($answer);
                 }
             }
@@ -342,13 +339,13 @@
 
         public function validateRollNumber()
         {
-            if (strlen($this->roll) !== ROLL_NUMBER_LENGTH) {
-                $this->error_roll_number_length = true;
-            }
-
-            if (!(1 === preg_match('/[12][01][0-9]{7}/', $this->roll))) {
-                $this->error_roll_number_format = true;
-            }
+//            if (strlen($this->roll) !== ROLL_NUMBER_LENGTH) {
+//                $this->error_roll_number_length = true;
+//            }
+//
+//            if (!(1 === preg_match('/[12][01][0-9]{7}/', $this->roll))) {
+//                $this->error_roll_number_format = true;
+//            }
 
             return $this->error_roll_number_length || $this->error_roll_number_format;
         }
@@ -558,6 +555,9 @@
         }
     }
 
+    // [Roll Phone Squad City File Marks] [Error] Response Correctness Betting Marking Marks Marks-from-betting
+    //              6                        3        26        26        3       8      26           3
+    //              6                        9        35        61       64      72      98         101
     class JuniorTechnothlonEvaluator extends TechnothlonEvaluator
     {
         public function __construct($data)
@@ -585,7 +585,7 @@
             ];
 
             self::$betters = [
-                13  => new BettingScheme1([13, 14, 15]),
+                13 => new BettingScheme1([13, 14, 15]),
                 19 => new BettingScheme1([19, 20, 21]),
                 22 => new BettingScheme1([22, 23, 24, 25])
             ];
@@ -655,8 +655,10 @@
         26 => 4
     ];
     TechnothlonEvaluator::setSolutions($juniors_key);
-    $file = fopen('/Users/x/Desktop/junior-2.csv', 'r');
-    $i    = 0;
+    $file = fopen('/Users/x/Desktop/Scanned_OMR/juniors.fixed.csv', 'r');
+
+    $i = 0;
+
     if ($file) {
         while (($data = fgets($file, 8192)) !== false) {
             if (0 === $i) {

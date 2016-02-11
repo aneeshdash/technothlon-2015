@@ -11,11 +11,20 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     {{--<link href="CSS/font-awesome.css" rel="stylesheet" type="text/css">--}}
     {{--<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">--}}
-    <link href="{{ asset("font-awesome-4.2.0/css/font-awesome.min.css") }}" rel="stylesheet" />
+    <link href="{{ asset("font-awesome-4.3.0/css/font-awesome.min.css") }}" rel="stylesheet" />
+    <style>
+        li {
+           color: red;
+        }
+    </style>
 @endsection
 @section('body')
     <div class="container">
         <h1>Registration</h1>
+        <h3>Note: The registration process for KVs & JNVs is different, they need not register through this form. Please <a href="{{ route('contact') }}">contact regional heads</a> for more details.</h3>
+        @if($errors->has())
+            <h3 style="color: red">There are errors in the page please check all inputs again.</h3>
+        @endif
         <div style="display: inline-block">
             <form id="register" action="{{ route('register') }}" method="post">
                 <hr>
@@ -41,7 +50,7 @@
                 </div>
                 <div class="centre" style="display: inline-block; width: 100%; margin: 10px 0px 15px 0px; background-color: khaki; display: none">
                     <div style="display: inline-block; height: 100%">
-                        <p style="vertical-align: middle"><b>Note: There is no city representative in your city.<br> Please select another city as your examination center</b></p>
+                        <p style="vertical-align: middle"><b>Note: There is no city representative in your city or all centres are filled up.<br> Please select another city as your examination center or contact the city representative.</b></p>
                     </div>
                     <div style="display: inline-block; height: 100%;margin-top: 8px; margin-left: 5%">
                         <h3 style="display: inline">Centre:</h3>
@@ -49,13 +58,13 @@
                             <option value="">Select Centre</option>
                             @foreach(State::all() as $state)
                                 <optgroup label="{{ $state->name }}">
-                            @foreach(City::where('state_id', $state->id)->get() as $city)
-                                @if(CityRep::where('city_id', $city->id)->count() >0)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endif
-                            @endforeach
+                                    @foreach(City::where('state_id', $state->id)->get() as $city)
+                                        @if(CityRep::where('city_id', $city->id)->count() >0 && $city->online == 0)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endif
+                                    @endforeach
                                 </optgroup>
-                                @endforeach
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -72,10 +81,12 @@
                     <div style="display: inline-block; width: 100%">
                         <ul>
                             @if($errors->has())
+                                <ul>
                                 {{ $errors->first('name', '<li>:message</li>') }}
                                 {{ $errors->first('addr1', '<li>:message</li>') }}
                                 {{ $errors->first('pincode', '<li>:message</li>') }}
                                 {{ $errors->first('contact', '<li>:message</li>') }}
+                                </ul>
                             @endif
                         </ul>
                     </div>
@@ -120,12 +131,14 @@
                     <div style="width: 100%">
                         <ul>
                             @if($errors->has())
+                                <ul>
                                 {{ $errors->first('name1', '<li>:message</li>') }}
                                 {{ $errors->first('name2', '<li>:message</li>') }}
                                 {{ $errors->first('email1', '<li>:message</li>') }}
                                 {{ $errors->first('email2', '<li>:message</li>') }}
                                 {{ $errors->first('contact1', '<li>:message</li>') }}
                                 {{ $errors->first('contact2', '<li>:message</li>') }}
+                                </ul>
                             @endif
                         </ul>
                     </div>
@@ -137,7 +150,7 @@
                             <div style="display: inline-block; clear: left; width: 100% "><label id="icon" for="name"><i class="fa fa-envelope "></i></label>
                                 <input required type="email" name="email1" id="name" placeholder="Email" value="{{ Input::old('email1') }}" style="width: 75%"></div>
                             <div style="display: inline-block; clear: left; width: 100%"><label id="icon" for="name"><i class="fa fa-phone"></i></label>
-                                <input type="text" name="contact1" id="name" placeholder="Contact" value="{{ Input::old('contact1') }}" style="width: 75%" required></div>
+                                <input type="number" name="contact1" id="name" placeholder="Contact" value="{{ Input::old('contact1') }}" style="width: 75%" required></div>
                         </div>
                     </div>
                     <div style="display: inline-block; width: 45%">
@@ -147,7 +160,7 @@
                         <div style="display: inline-block; clear: left; width: 100%"><label id="icon" for="name"><i class="fa fa-envelope "></i></label>
                             <input type="email" name="email2" id="name" placeholder="Email" value="{{ Input::old('email2') }}" required style="width: 75%"></div>
                         <div style="display: inline-block; clear: left; width: 100%"><label id="icon" for="name"><i class="fa fa-phone"></i></label>
-                            <input type="text" name="contact2" id="name" placeholder="Contact" value="{{ Input::old('contact2') }}" required style="width: 75%"></div>
+                            <input type="number" name="contact2" id="name" placeholder="Contact" value="{{ Input::old('contact2') }}" required style="width: 75%"></div>
                     </div>
                 </div>
                 <div style="display: inline-block; width: 100%">
